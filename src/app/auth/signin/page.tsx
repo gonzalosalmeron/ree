@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { Velustro } from 'uvcanvas'
 
-import Button from '@/components/ui/button'
-import Input from '@/components/ui/input'
+import FormSignin from '@/components/auth/form-signin'
 
 export default function Page() {
   return (
@@ -19,30 +18,9 @@ export default function Page() {
           <p className='text-lg font-bold uppercase'>Ree</p>
         </div>
         <div className='flex w-full items-center justify-center'>
-          <form className='flex w-full max-w-lg flex-col gap-3'>
-            <video
-              src='/ree-video.mp4'
-              autoPlay
-              loop
-              muted
-              className='mx-auto w-20'
-            />
-            <div className='pb-4'>
-              <h1 className='pb-4 text-5xl font-medium'>
-                Visualize the Spanish power grid, effortlessly
-              </h1>
-              <h4>
-                Create an account or log in to explore Spain's power grid with
-                ease.
-              </h4>
-            </div>
-            <Input label='Email' />
-            <Input label='Password' type='password' />
-
-            <Button>Sign in</Button>
-          </form>
+          <FormSignin />
         </div>
-        <p className='text-xs text-gray-400'>® REE 2024</p>
+        <p className='text-xs text-secondary-foreground/60'>® REE 2024</p>
       </div>
       <div className='hidden w-full p-4 lg:block'>
         <div className='h-full w-full overflow-hidden rounded-xl'>
