@@ -1,22 +1,13 @@
-import Image from 'next/image'
 import { Velustro } from 'uvcanvas'
 
 import FormSignin from '@/components/auth/form-signin'
+import Brand from '@/components/ui/brand'
 
 export default function Page() {
   return (
     <section className='flex min-h-screen w-full'>
       <div className='flex w-full min-w-[400px] flex-col justify-between px-6 py-10 lg:max-w-2xl'>
-        <div className='flex items-center gap-2'>
-          <Image
-            width={300}
-            height={40}
-            src='/logo.avif'
-            className='w-16'
-            alt='REE'
-          />
-          <p className='text-lg font-bold uppercase'>Ree</p>
-        </div>
+        <Brand />
         <div className='flex w-full items-center justify-center'>
           <FormSignin />
         </div>
