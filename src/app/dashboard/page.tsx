@@ -4,6 +4,7 @@ import HistoricalData from '@/components/dashboard/complex-chart/HistoricData'
 import GenerationStructure, {
   SkeletonGenerationStructure,
 } from '@/components/dashboard/generation-structure'
+import TableCo2 from '@/components/dashboard/table-co2'
 
 export default function Page() {
   return (
@@ -20,7 +21,10 @@ export default function Page() {
         <Suspense fallback={<SkeletonGenerationStructure />}>
           <GenerationStructure />
         </Suspense>
+
         <HistoricalData />
+
+        <TableCo2 />
         {/* <Suspense fallback={<SkeletonCharRealTimeMarketPlaces />}>
         <CharRealTimeMarketPlaces />
       </Suspense> */}
