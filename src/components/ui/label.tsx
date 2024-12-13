@@ -8,7 +8,11 @@ const Label = React.forwardRef<
   HTMLLabelElement,
   React.ComponentPropsWithoutRef<'label'>
 >(({ className, ...props }, ref) => (
-  <label ref={ref} className={cn(className)} {...props} />
+  <label
+    ref={ref}
+    className={cn(className, 'text-secondary-foreground/60')}
+    {...props}
+  />
 ))
 
 Label.displayName = 'Label'

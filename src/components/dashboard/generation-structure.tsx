@@ -41,7 +41,7 @@ const Card = ({ children }: { children: React.ReactNode }) => (
         width={400}
         height={400}
         alt='Energy'
-        className='hidden w-64 mix-blend-multiply md:block'
+        className='hidden w-64 md:block'
         priority
       />
       <div className='w-full'>{children}</div>

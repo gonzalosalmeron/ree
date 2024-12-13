@@ -6,12 +6,18 @@ import {
   Cog8ToothIcon,
   SquaresPlusIcon,
 } from '@heroicons/react/16/solid'
+import dynamic from 'next/dynamic'
 
 import NavbarLinkItem from '@/components/dashboard/navbar-link-item'
 import NavbarUserProfile, {
   Skeleton,
 } from '@/components/dashboard/navbar-user-profile'
 import Brand from '@/components/ui/brand'
+
+const ButtonTheme = dynamic(() => import('@/components/ui/button-theme'), {
+  ssr: false,
+  loading: () => <div className='skeleton h-5 w-5 rounded-full' />,
+})
 
 const tabs = [
   {
@@ -45,12 +51,15 @@ export default function Navbar() {
             <Brand />
           </div>
 
-          <Suspense fallback={<Skeleton />}>
-            <NavbarUserProfile />
-          </Suspense>
+          <div className='flex items-center gap-2 text-secondary-foreground/60'>
+            <ButtonTheme />
+            <Suspense fallback={<Skeleton />}>
+              <NavbarUserProfile />
+            </Suspense>
+          </div>
         </div>
       </nav>
-      <nav className='border-b bg-white py-2'>
+      <nav className='border-b bg-background py-2'>
         <ul className='width-layout flex items-center gap-2.5 overflow-x-auto'>
           {tabs.map(({ href, name, icon }, i) => (
             <li key={i}>

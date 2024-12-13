@@ -65,7 +65,7 @@ export default function TableCo2(): JSX.Element {
     const row = tableData[index]
     return (
       <div
-        className='grid grid-cols-5 border-b text-sm'
+        className='grid grid-cols-5 border-b text-sm text-primary'
         style={{
           ...style,
         }}
@@ -92,19 +92,19 @@ export default function TableCo2(): JSX.Element {
     <Container title='Co2 Emissions'>
       <div className='relative overflow-x-auto pt-4'>
         <div className='grid w-full grid-cols-5 text-left text-sm'>
-          <div className='sticky top-0 border-b bg-white px-4 py-2 text-xs uppercase'>
+          <div className='sticky top-0 border-b bg-background px-4 py-2 text-xs uppercase text-primary'>
             Date
           </div>
-          <div className='sticky top-0 border-b bg-white px-4 py-2 text-xs uppercase'>
+          <div className='sticky top-0 border-b bg-background px-4 py-2 text-xs uppercase text-primary'>
             Title
           </div>
-          <div className='sticky top-0 border-b bg-white px-4 py-2 text-xs uppercase'>
+          <div className='sticky top-0 border-b bg-background px-4 py-2 text-xs uppercase text-primary'>
             Color
           </div>
-          <div className='sticky top-0 truncate border-b bg-white px-4 py-2 text-xs uppercase'>
+          <div className='sticky top-0 truncate border-b bg-background px-4 py-2 text-xs uppercase text-primary'>
             Emission Value
           </div>
-          <div className='sticky top-0 border-b bg-white px-4 py-2 text-xs uppercase'>
+          <div className='sticky top-0 border-b bg-background px-4 py-2 text-xs uppercase text-primary'>
             Percentage
           </div>
         </div>

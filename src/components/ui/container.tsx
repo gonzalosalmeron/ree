@@ -10,7 +10,7 @@ export default function Container({
   return (
     <div
       className={cn(
-        'width-layout rounded-xl border bg-white px-6 pb-9 pt-4',
+        'width-layout rounded-xl border bg-background px-6 pb-9 pt-4',
         className
       )}
     >
