@@ -25,9 +25,6 @@ export default function Page() {
         <HistoricalData />
 
         <TableCo2 />
-        {/* <Suspense fallback={<SkeletonCharRealTimeMarketPlaces />}>
-        <CharRealTimeMarketPlaces />
-      </Suspense> */}
       </div>
     </section>
   )
