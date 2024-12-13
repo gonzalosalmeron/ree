@@ -27,7 +27,7 @@ const tabs = [
 
 export default function Navbar() {
   return (
-    <nav className='border-b px-8 py-6'>
+    <nav className='border-b px-8 py-3'>
       <div className='mx-auto flex w-full items-center justify-between gap-8'>
         <div className='flex items-center gap-16'>
           <Brand />
