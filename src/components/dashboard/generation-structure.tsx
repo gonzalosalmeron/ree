@@ -10,28 +10,24 @@ export default async function GenerationStructure() {
   return (
     <Card>
       <div className='grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-y-4 pt-2'>
-        {data?.included?.map(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (generation: Record<string, any>, i: number) => {
-            const title = generation?.type ?? 'Unkown'
-            return (
-              <div key={i} className='inline-block w-fit'>
-                <p>
-                  {generation?.attributes?.values?.[0].value?.toFixed(2) ??
-                    '---'}
-                </p>
-                <p className='text-xs' title={title}>
-                  <span
-                    style={{ background: generation?.attributes?.color }}
-                    className='mr-1 inline-flex h-2 w-2'
-                  />
+        {data?.included?.map((generation: Record<string, any>, i: number) => {
+          const title = generation?.type ?? 'Unkown'
+          return (
+            <div key={i} className='inline-block w-fit'>
+              <p>
+                {generation?.attributes?.values?.[0].value?.toFixed(2) ?? '---'}
+              </p>
+              <p className='text-xs' title={title}>
+                <span
+                  style={{ background: generation?.attributes?.color }}
+                  className='mr-1 inline-flex h-2 w-2'
+                />
 
-                  {title}
-                </p>
-              </div>
-            )
-          }
-        )}
+                {title}
+              </p>
+            </div>
+          )
+        })}
       </div>
     </Card>
   )
@@ -45,7 +41,7 @@ const Card = ({ children }: { children: React.ReactNode }) => (
         width={400}
         height={400}
         alt='Energy'
-        className='w-64 mix-blend-multiply'
+        className='hidden w-64 mix-blend-multiply md:block'
         priority
       />
       <div className='w-full'>{children}</div>

@@ -39,7 +39,7 @@ const tabs = [
 export default function Navbar() {
   return (
     <div>
-      <nav className='border-b px-8 py-3'>
+      <nav className='border-b py-3'>
         <div className='width-layout mx-auto flex w-full items-center justify-between gap-8'>
           <div className='flex items-center gap-16'>
             <Brand />
@@ -51,7 +51,7 @@ export default function Navbar() {
         </div>
       </nav>
       <nav className='border-b bg-white py-2'>
-        <ul className='width-layout flex items-center gap-2.5'>
+        <ul className='width-layout flex items-center gap-2.5 overflow-x-auto'>
           {tabs.map(({ href, name, icon }, i) => (
             <li key={i}>
               <NavbarLinkItem href={href} active={i == 0}>
