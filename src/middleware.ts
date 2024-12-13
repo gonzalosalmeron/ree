@@ -11,10 +11,10 @@ export default auth((req) => {
   const isAuthUrl = apiAuthPrefixUrls.includes(nextUrl.pathname)
 
   if (isAuthUrl && isLoggedIn) {
-    return NextResponse.redirect(new URL('/', nextUrl))
+    return NextResponse.redirect(new URL('/dashboard', nextUrl))
   }
 
-  if (nextUrl.pathname === '/' && !isLoggedIn) {
+  if (!apiAuthPrefixUrls.includes(nextUrl.pathname) && !isLoggedIn) {
     return NextResponse.redirect(new URL('/auth/signin', nextUrl))
   }
 
