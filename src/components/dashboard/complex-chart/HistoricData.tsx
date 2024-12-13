@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 
+import dynamic from 'next/dynamic'
+
 import useFetcher from '@/hooks/useFetcher'
 
-import ChartEnergy from '@/components/dashboard/complex-chart/partials/chart-energy'
 import ChartTypePicker from '@/components/dashboard/complex-chart/partials/chart-type-picker'
 import DataFrecuence from '@/components/dashboard/complex-chart/partials/data-frecuence'
 import DatePicker from '@/components/dashboard/complex-chart/partials/date-picker'
@@ -12,6 +13,14 @@ import ValuePicker from '@/components/dashboard/complex-chart/partials/value-pic
 import { IconSpinner } from '@/components/icons/icon-spinner'
 import Button from '@/components/ui/button'
 import Container from '@/components/ui/container'
+
+const ChartEnergy = dynamic(
+  () => import('@/components/dashboard/complex-chart/partials/chart-energy'),
+  {
+    ssr: false,
+    loading: () => <SkeletonLoading />,
+  }
+)
 
 const API_URL = (dateFrom: string, dateTo: string) =>
   dateFrom && dateTo
@@ -63,11 +72,7 @@ export default function HistoricalData() {
           </div>
         ) : (
           <>
-            {loading && (
-              <div className='flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 py-4 text-sm text-zinc-900'>
-                Loading data... <IconSpinner className='animate-spin' />
-              </div>
-            )}
+            {loading && <SkeletonLoading />}
             {data && showChart && !loading && (
               <ChartEnergy data={data} value={value} chartType={chartType} />
             )}
@@ -77,3 +82,9 @@ export default function HistoricalData() {
     </Container>
   )
 }
+
+const SkeletonLoading = () => (
+  <div className='flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 py-4 text-sm text-zinc-900'>
+    Loading data... <IconSpinner className='animate-spin' />
+  </div>
+)
