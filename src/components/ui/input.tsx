@@ -13,10 +13,7 @@ const Input = React.forwardRef<
       {label && <Label htmlFor={props?.name}>{label}</Label>}
       <input
         type={type}
-        className={cn(
-          'placeholder:text-muted-foreground focus:border-primary flex h-10 w-full rounded-md border bg-background px-3 py-2 text-base outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-          className
-        )}
+        className={cn('input-style', className)}
         ref={ref}
         {...props}
       />

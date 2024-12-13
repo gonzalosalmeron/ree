@@ -9,7 +9,7 @@ const Button = React.forwardRef<
   return (
     <button
       className={cn(
-        'rounded-md bg-primary px-4 py-2 text-secondary disabled:cursor-not-allowed disabled:bg-primary/75',
+        'rounded-md bg-primary px-4 py-2 text-secondary disabled:cursor-not-allowed disabled:opacity-90',
         className
       )}
       ref={ref}

@@ -10,6 +10,7 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "indent": ["warn", 2],
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "no-var": "error",
     "object-shorthand": "error",
