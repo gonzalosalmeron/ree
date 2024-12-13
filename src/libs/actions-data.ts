@@ -14,12 +14,13 @@ export const fetcher = <T = unknown>(
 }
 
 export const getRealTimeMarketPlaces = async () => {
-  const [date] = new Date().toISOString().split('T')
+  const date = getCurrentDate()
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const res = await fetcher<Record<string, any>>(
-      `/es/datos/mercados/precios-mercados-tiempo-real?start_date=${date}T00:00&end_date=${date}T23:59&time_trunc=hour`
+      `/en/datos/mercados/precios-mercados-tiempo-real?start_date=${date}T00:00&end_date=${date}T23:59&time_trunc=hour`,
+      { cache: 'no-cache' }
     )
 
     const data = res.included.reduce(
@@ -55,4 +56,26 @@ export const getRealTimeMarketPlaces = async () => {
   } catch {
     return null
   }
+}
+
+export const getGenerationStructure = async () => {
+  // await new Promise((resolve) => setTimeout(() => resolve('a'), 2000))
+  const date = getCurrentDate()
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const res = await fetcher<Record<string, any>>(
+      `/en/datos/generacion/estructura-generacion?start_date=${date}T00:00&end_date=${date}T23:59&time_trunc=day`,
+      { cache: 'no-cache' }
+    )
+
+    return res
+  } catch {
+    return null
+  }
+}
+
+export const getCurrentDate = () => {
+  const [date] = new Date().toISOString().split('T')
+  return date
 }
