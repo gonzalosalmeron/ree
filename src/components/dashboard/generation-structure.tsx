@@ -1,6 +1,7 @@
+import Container from '../ui/container'
 import Image from 'next/image'
 
-import { getGenerationStructure } from '@/libs/actions-data'
+import { getCurrentDate, getGenerationStructure } from '@/libs/actions-data'
 import { cn } from '@/libs/utils'
 
 export default async function GenerationStructure() {
@@ -37,23 +38,19 @@ export default async function GenerationStructure() {
 }
 
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className='flex items-center gap-6 px-6 py-4'>
-    <Image
-      src='/energy.avif'
-      width={400}
-      height={400}
-      alt='Energy'
-      className='w-64 mix-blend-multiply'
-      priority
-    />
-    <div className='w-full'>
-      <p className='text-xs font-medium uppercase text-secondary-foreground/60'>
-        Generation structure by technology
-      </p>
-
-      {children}
+  <Container title={`Generation structure by technology (${getCurrentDate()})`}>
+    <div className='flex items-center gap-10'>
+      <Image
+        src='/energy.avif'
+        width={400}
+        height={400}
+        alt='Energy'
+        className='w-64 mix-blend-multiply'
+        priority
+      />
+      <div className='w-full'>{children}</div>
     </div>
-  </div>
+  </Container>
 )
 
 export const SkeletonGenerationStructure = () => (

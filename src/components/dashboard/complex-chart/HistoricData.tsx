@@ -11,6 +11,7 @@ import DatePicker from '@/components/dashboard/complex-chart/partials/date-picke
 import ValuePicker from '@/components/dashboard/complex-chart/partials/value-picker'
 import { IconSpinner } from '@/components/icons/icon-spinner'
 import Button from '@/components/ui/button'
+import Container from '@/components/ui/container'
 
 const API_URL = (dateFrom: string, dateTo: string) =>
   dateFrom && dateTo
@@ -34,10 +35,10 @@ export default function HistoricalData() {
   } = useFetcher(API_URL(dates.from, dates.to))
 
   return (
-    <div className='border-y border-border px-6 pb-9 pt-4'>
-      <p className='text-sm font-medium text-secondary-foreground/60'>
-        Historic data
-      </p>
+    <Container
+      title='Historical data'
+      className='border-y border-border px-6 pb-9 pt-4'
+    >
       <div className='flex flex-col items-end gap-6 pt-4 xl:flex-row'>
         <DatePicker dates={dates} setDates={setDates} />
         <DataFrecuence originalData={apiResponse} setNewData={setData} />
@@ -73,6 +74,6 @@ export default function HistoricalData() {
           </>
         )}
       </div>
-    </div>
+    </Container>
   )
 }
