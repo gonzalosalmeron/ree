@@ -16,12 +16,18 @@ export default function FormSignup() {
   return (
     <form action={dispatch} className='flex w-full max-w-lg flex-col gap-3'>
       <video
-        src='/ree-video.mp4'
+        width='80'
+        height='80'
         autoPlay
+        playsInline
         loop
         muted
-        className='mx-auto w-20'
-      />
+        preload='none'
+        className='mx-auto select-none'
+      >
+        <source src='/ree-video.mp4' type='video/mp4' />
+        Your browser does not support the video tag.
+      </video>
       <div className='pb-4'>
         <h1 className='pb-4 text-5xl font-medium'>
           Create a new account now, for free
