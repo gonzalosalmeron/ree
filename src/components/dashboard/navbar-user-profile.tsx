@@ -1,4 +1,5 @@
-import { auth } from 'auth'
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/outline'
+import { auth, signOut } from 'auth'
 
 import IconSettings from '@/components/icons/icon-settings'
 
@@ -11,6 +12,19 @@ export default async function NavbarUserProfile() {
         <IconSettings />
       </button>
       <div className='mx-1 h-8 border-[0.5px] border-border'></div>
+      <form
+        action={async () => {
+          'use server'
+          await signOut({
+            redirectTo: '/auth/signin',
+          })
+        }}
+        className='flex items-center'
+      >
+        <button aria-label='Logout user'>
+          <ArrowRightStartOnRectangleIcon className='h-5 w-5' />
+        </button>
+      </form>
       <div className='relative'>
         <div id='btn-show-menu-options-r0'>
           <div className='flex items-center gap-2'>

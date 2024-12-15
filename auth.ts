@@ -2,6 +2,8 @@ import authConfig from './auth.config'
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
+import { getUserFromDb, isPasswordValid } from '@/libs/actions-auth'
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
   ...authConfig,
@@ -14,14 +16,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         const { email, password } = credentials
 
-        if (!email && email != 'ree@admin.es') {
+        const user = await getUserFromDb(email as string)
+        if (!user) {
           return null
         }
-        if (password != 'supersecret') return null
+
+        if (!(await isPasswordValid(password as string, user.password)))
+          return null
 
         return {
-          name: 'Test user',
-          email: 'user.email@email.es',
+          name: user.name,
+          email: user.email,
         }
       },
     }),

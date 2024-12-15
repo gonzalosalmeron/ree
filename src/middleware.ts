@@ -3,7 +3,7 @@ import NextAuth from 'next-auth'
 import { NextResponse } from 'next/server'
 
 const { auth } = NextAuth(authConfig)
-const apiAuthPrefixUrls = ['/auth/signin']
+const apiAuthPrefixUrls = ['/auth/signin', '/auth/signup']
 
 export default auth((req) => {
   const { nextUrl, auth } = req
