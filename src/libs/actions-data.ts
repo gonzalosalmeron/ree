@@ -13,21 +13,32 @@ export const fetcher = <T = unknown>(
   })
 }
 
-export const getGenerationStructure = async () => {
-  // await new Promise((resolve) => setTimeout(() => resolve('a'), 2000))
-  const date = getCurrentDate()
+export const getGenerationStructure = async (): Promise<Record<
+  string,
+  any
+> | null> => {
+  // Set the initial date
+  const currentDate = new Date(getCurrentDate())
+  const maxRetries = 3
 
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const res = await fetcher<Record<string, any>>(
-      `/en/datos/generacion/estructura-generacion?start_date=${date}T00:00&end_date=${date}T23:59&time_trunc=day`,
-      { cache: 'no-cache' }
-    )
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    const [formattedDate] = currentDate.toISOString().split('T')
 
-    return res
-  } catch {
-    return null
+    try {
+      const res = await fetcher<Record<string, any>>(
+        `/en/datos/generacion/estructura-generacion?start_date=${formattedDate}T00:00&end_date=${formattedDate}T23:59&time_trunc=day`,
+        { cache: 'no-cache' }
+      )
+
+      return { ...res, data: { ...res?.data, date: formattedDate } }
+    } catch (error) {
+      console.error(`Error fetching data for ${formattedDate}:`, error)
+      currentDate.setDate(currentDate.getDate() - 1)
+    }
   }
+
+  console.error('Failed to fetch data after 3 attempts.')
+  return null
 }
 
 export const getCurrentDate = () => {
