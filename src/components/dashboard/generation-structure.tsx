@@ -1,14 +1,14 @@
 import Container from '../ui/container'
 import Image from 'next/image'
 
-import { getCurrentDate, getGenerationStructure } from '@/libs/actions-data'
+import { getGenerationStructure } from '@/libs/actions-data'
 import { cn } from '@/libs/utils'
 
 export default async function GenerationStructure() {
   const data = await getGenerationStructure()
 
   return (
-    <Card>
+    <Card date={data?.data?.date}>
       <div className='grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-y-4 pt-2'>
         {data?.included?.map((generation: Record<string, any>, i: number) => {
           const title = generation?.type ?? 'Unkown'
@@ -33,8 +33,14 @@ export default async function GenerationStructure() {
   )
 }
 
-const Card = ({ children }: { children: React.ReactNode }) => (
-  <Container title={`Generation structure by technology (${getCurrentDate()})`}>
+const Card = ({
+  date,
+  children,
+}: {
+  date: string
+  children: React.ReactNode
+}) => (
+  <Container title={`Generation structure by technology (${date})`}>
     <div className='flex items-center gap-10'>
       <Image
         src='/energy.avif'
@@ -50,7 +56,7 @@ const Card = ({ children }: { children: React.ReactNode }) => (
 )
 
 export const SkeletonGenerationStructure = () => (
-  <Card>
+  <Card date='xxxx-xx-xx'>
     <div
       className={cn(
         'col-span-2 grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-y-2 pt-4'
