@@ -30,7 +30,7 @@ const API_URL = (dateFrom: string, dateTo: string) =>
 export default function HistoricalData() {
   const [dates, setDates] = useState<Dates>({
     from: '',
-    to: '2024-05-10',
+    to: '2024-04-10',
   })
   const [data, setData] = useState(null)
   const [value, setValue] = useState<keyof ApiValue>('Energía Activa')
@@ -59,7 +59,7 @@ export default function HistoricalData() {
             refetch()
           }}
           disabled={loading || !dates.from || !dates.to || !value || !chartType}
-          className='flex h-fit shrink-0 items-center gap-2 bg-accent text-sm font-medium text-accent-foreground'
+          className='flex shrink-0 items-center gap-2 bg-accent text-sm font-medium text-accent-foreground'
         >
           Generate Data {loading && <IconSpinner />}
         </Button>

@@ -26,7 +26,7 @@ export default function FormSignup() {
         <h1 className='pb-4 text-5xl font-medium'>
           Create a new account now, for free
         </h1>
-        <h4>Log in or register now to explore Spain's power grid with ease.</h4>
+        <h2>Log in or register now to explore Spain's power grid with ease.</h2>
       </div>
       <div className='flex flex-col items-start gap-3 md:flex-row'>
         <Input label='Name' name='name' error={state?.errors?.name} />

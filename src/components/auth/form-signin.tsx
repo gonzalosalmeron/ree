@@ -16,19 +16,24 @@ export default function FormSignin() {
   return (
     <form action={dispatch} className='flex w-full max-w-lg flex-col gap-3'>
       <video
-        src='/ree-video.mp4'
+        width='80'
+        height='80'
         autoPlay
         loop
         muted
-        className='mx-auto w-20'
-      />
+        preload='none'
+        className='mx-auto'
+      >
+        <source src='/ree-video.mp4' type='video/mp4' />
+        Your browser does not support the video tag.
+      </video>
       <div className='pb-4'>
         <h1 className='pb-4 text-5xl font-medium'>
           Visualize the Spanish power grid, effortlessly
         </h1>
-        <h4>
+        <h2>
           Create an account or log in to explore Spain's power grid with ease.
-        </h4>
+        </h2>
       </div>
       <Input label='Email' name='email' />
       <Input

@@ -8,7 +8,7 @@ export default async function NavbarUserProfile() {
 
   return (
     <div className='flex items-center gap-2'>
-      <button>
+      <button aria-label='Settings'>
         <IconSettings />
       </button>
       <div className='mx-1 h-8 border-[0.5px] border-border'></div>

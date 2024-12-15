@@ -24,7 +24,7 @@ export default function TableCo2(): JSX.Element {
   const [startDate] = useState<Date>(new Date('2015-01-01T00:00:00'))
 
   const getKey = (pageIndex: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.included.length) return null // Reached the end
+    if (previousPageData && !previousPageData.included.length) return null
 
     const nextStartDate = new Date(startDate)
     nextStartDate.setMonth(startDate.getMonth() + pageIndex * 2)
@@ -39,7 +39,6 @@ export default function TableCo2(): JSX.Element {
   const tableData: TableRow[] = useMemo(() => {
     if (!data) return []
 
-    // Transform the data into a flattened format
     return data.flatMap((page: any) =>
       page.included.flatMap((item: any) => {
         const { title, color } = item.attributes
@@ -48,7 +47,7 @@ export default function TableCo2(): JSX.Element {
           title,
           color,
           date: value.datetime,
-          emissionValue: value.value,
+          emissionValue: value.value.toFixed(2),
           percentage: value.percentage,
         }))
       })
@@ -116,16 +115,16 @@ export default function TableCo2(): JSX.Element {
         >
           {({ index, style }) => Row({ index, style })}
         </List>
-        <div className='mt-4 flex items-center justify-between'>
+        <div className='mt-4 flex items-center justify-between text-sm font-medium'>
           <Button
-            className='rounded bg-gray-300 px-4 py-2 text-gray-700 disabled:opacity-50'
+            className='bg-gray-300 text-gray-700 disabled:opacity-50'
             disabled={isValidating || size === 1}
             onClick={() => setSize(size - 1)}
           >
             Previous
           </Button>
           <Button
-            className='rounded bg-accent px-4 py-2 text-white disabled:opacity-50'
+            className='bg-accent text-white disabled:opacity-50'
             disabled={isValidating}
             onClick={() => setSize(size + 1)}
           >

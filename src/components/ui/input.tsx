@@ -15,6 +15,7 @@ const Input = React.forwardRef<
         type={type}
         className={cn('input-style', className)}
         ref={ref}
+        id={props?.id || props?.name}
         {...props}
       />
       {error && <p className='pt-1.5 text-xs text-red-500'>{error}</p>}

@@ -22,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-window": "^1.8.10",
+    "sharp": "^0.33.5",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.5.5",
     "uvcanvas": "^0.2.2",
